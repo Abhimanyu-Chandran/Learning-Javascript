@@ -14,10 +14,23 @@
 <!--Scissors Button-->
 <button onClick=" playGame('Scissors'); ">Scissors
 </button>
+
+<button onClick="
+    score.wins = 0;
+    score.loses = 0;
+    score.ties = 0">Reset Score
+</button>
 <!--Enhanced Version Of The Game-->
 <p><a href="boolean-game.html">Click here</a> to see the final version of the project</p>
 
 <script>
+    // Declaring Wins, Loses and Ties as Zero
+    const score = {
+        wins: 0,
+        loses: 0,
+        ties: 0
+    }
+
     //ComputerMove Function
     function pickComputerMove() {
         const randomNumber = Math.random();
@@ -34,6 +47,7 @@
         return computerMove;
     }
 
+    // PlayerMove Function
     function playGame(playerMove) {
         const computerMove = pickComputerMove();
         console.log(computerMove);
@@ -67,22 +81,19 @@
                 result = `You Win`;
             }
         }
-        // Alerting The Player Their Status
-        alert(`You picked ${playerMove}, Computer picked ${computerMove}. ${result}`);
+        // Updates The Score Based On The Result
+        if (result === `You Win`) {
+            score.wins = score.wins + 1;
+        } else if (result === `You Lose`) {
+            score.loses = score.loses + 1;
+        } else if (result === 'Tie') {
+            score.ties = score.ties + 1;
+        }
+
+        // Alerting The Player Of Their Status And Score
+        alert(`You picked ${playerMove}, Computer picked ${computerMove}. ${result}
+Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
     }
-
-    // function calculateTax(cost, taxPercent = 0.2) {
-    //     console.log(cost * taxPercent);
-    // }
-    //
-    // calculateTax(2000, 0.1);
-    // calculateTax(2000);
-
-    // function greet(name){
-    //     console.log(`Hello, ${name}!!`);
-    // }
-    // greet('Simon');
-    // greet('Leah');
 </script>
 </body>
 </html>
