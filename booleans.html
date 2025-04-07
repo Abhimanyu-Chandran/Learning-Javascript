@@ -25,11 +25,8 @@
 
 <script>
     // Declaring Wins, Loses and Ties as Zero
-    const score = {
-        wins: 0,
-        loses: 0,
-        ties: 0
-    }
+    // Getting The Value From The Object Score After Converting It Back To JavaScript Code
+    const score = JSON.parse(localStorage.getItem('score'));
 
     //ComputerMove Function
     function pickComputerMove() {
@@ -90,10 +87,31 @@
             score.ties = score.ties + 1;
         }
 
+        // Set The localStorage Method To Store The Score After Stringifying The Object Score
+        localStorage.setItem('score', JSON.stringify(score));
+
         // Alerting The Player Of Their Status And Score
         alert(`You picked ${playerMove}, Computer picked ${computerMove}. ${result}
 Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
     }
+
+    // const product = {
+    //     name: 'Shirt', 'Delivery-time': '1 day',
+    //     rating: {
+    //         stars: 4.5,
+    //         count: 87
+    //     },
+    //     fun: function function1() {
+    //         console.log('Function inside Object');
+    //     }
+    // }
+    // console.log(product);
+    // console.log(product.name);
+    // console.log(product['name']);
+    // console.log(product['delivery-time']);
+    // console.log(product.rating.count);
+    // product.fun();
+
 </script>
 </body>
 </html>
