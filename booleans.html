@@ -59,6 +59,7 @@
             } else if (computerMove === `Scissors`) {
                 result = `You Win`;
             }
+
             // If The Player Picks Paper
         } else if (playerMove === `Paper`) {
             if (computerMove === `Paper`) {
@@ -68,6 +69,7 @@
             } else if (computerMove === `Rock`) {
                 result = `You Win`;
             }
+
             // If The Player Picks Scissors
         } else if (playerMove === `Scissors`) {
             if (computerMove === `Scissors`) {
@@ -78,6 +80,7 @@
                 result = `You Win`;
             }
         }
+
         // Updates The Score Based On The Result
         if (result === `You Win`) {
             score.wins = score.wins + 1;
