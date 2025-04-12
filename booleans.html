@@ -18,7 +18,8 @@
 <button onClick="
     score.wins = 0;
     score.loses = 0;
-    score.ties = 0">Reset Score
+    score.ties = 0
+    localStorage.removeItem('score');">Reset Score
 </button>
 <!--Enhanced Version Of The Game-->
 <p><a href="boolean-game.html">Click here</a> to see the final version of the project</p>
@@ -26,7 +27,11 @@
 <script>
     // Declaring Wins, Loses and Ties as Zero
     // Getting The Value From The Object Score After Converting It Back To JavaScript Code
-    const score = JSON.parse(localStorage.getItem('score'));
+    let score = JSON.parse(localStorage.getItem('score')) || {
+        wins: 0,
+        loses: 0,
+        ties: 0
+    };          
 
     //ComputerMove Function
     function pickComputerMove() {
@@ -97,24 +102,6 @@
         alert(`You picked ${playerMove}, Computer picked ${computerMove}. ${result}
 Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
     }
-
-    // const product = {
-    //     name: 'Shirt', 'Delivery-time': '1 day',
-    //     rating: {
-    //         stars: 4.5,
-    //         count: 87
-    //     },
-    //     fun: function function1() {
-    //         console.log('Function inside Object');
-    //     }
-    // }
-    // console.log(product);
-    // console.log(product.name);
-    // console.log(product['name']);
-    // console.log(product['delivery-time']);
-    // console.log(product.rating.count);
-    // product.fun();
-
 </script>
 </body>
 </html>

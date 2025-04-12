@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+
+<script>
+    const product = {
+        name: 'Shirt', 'Delivery-time': '1 day',
+        rating: {
+            stars: 4.5,
+            count: 87
+        },
+        fun: function function1() {
+            console.log('Function inside Object');
+        }
+    }
+    // console.log(product);
+    // console.log(product["Delivery-time"]);
+    // console.log(product.name);
+    // console.log(product['name']);
+    console.log(product.rating);
+    console.log(JSON.stringify(product));
+    // product.fun();
+</script>
+</body>
+</html>
