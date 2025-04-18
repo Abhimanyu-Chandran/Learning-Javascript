@@ -3,23 +3,56 @@
 <head>
     <title>Booleans</title>
 </head>
+
+<style>
+    body {
+        background-color: #0e0d0d;
+        color: aqua;
+        font-family: Verdana, serif;
+    }
+
+    img {
+        height: 50px;
+    }
+
+    .play-button {
+        background-color: transparent;
+        width: 120px;
+        height: 120px;
+        cursor: pointer;
+        border: 3px solid aqua;
+        border-radius: 60px;
+        margin-right: 10px;
+    }
+
+    .result{
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 50px;
+    }
+</style>
+
 <body>
 <h1>Rock Paper Scissors Game</h1>
 <!--Rock Button-->
-<button onClick=" playGame(`Rock`); ">Rock
-</button>
+<button class="play-button" onClick=" playGame(`Rock`); "><img alt="rock-image" src="img/rock-emoji.png"></img></button>
 <!--Paper Button-->
-<button onClick=" playGame('Paper'); "> Paper
+<button class="play-button" onClick=" playGame('Paper'); "><img alt="paper-image" src="img/paper-emoji.png"></img>
 </button>
 <!--Scissors Button-->
-<button onClick=" playGame('Scissors'); ">Scissors
-</button>
+<button class="play-button" onClick=" playGame('Scissors'); "><img alt="scissors-image"
+                                                                   src="img/scissors-emoji.png"></img></button>
+
+<p class="js-result result"></p>
+<p class="js-moves"></p>
+<p class="js-score"></p>
 
 <button onClick="
     score.wins = 0;
     score.loses = 0;
     score.ties = 0
-    localStorage.removeItem('score');">Reset Score
+    localStorage.removeItem('score');
+    updateScoreElement();">Reset Score
 </button>
 <!--Enhanced Version Of The Game-->
 <p><a href="boolean-game.html">Click here</a> to see the final version of the project</p>
@@ -31,7 +64,13 @@
         wins: 0,
         loses: 0,
         ties: 0
-    };          
+    };
+
+    function updateScoreElement() {
+        document.querySelector('.js-score').innerHTML = `Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`;
+    }
+
+    updateScoreElement();
 
     //ComputerMove Function
     function pickComputerMove() {
@@ -98,9 +137,11 @@
         // Set The localStorage Method To Store The Score After Stringifying The Object Score
         localStorage.setItem('score', JSON.stringify(score));
 
+        updateScoreElement();
+
         // Alerting The Player Of Their Status And Score
-        alert(`You picked ${playerMove}, Computer picked ${computerMove}. ${result}
-Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`);
+        document.querySelector('.js-result').innerHTML = result;
+        document.querySelector('.js-moves').innerHTML = `You ${playerMove} - ${computerMove} Computer`;
     }
 </script>
 </body>

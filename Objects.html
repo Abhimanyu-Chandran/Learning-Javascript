@@ -5,25 +5,52 @@
     <title>DOM</title>
 </head>
 <body>
+<!--<p>YouTube Subscribe Button</p>-->
+<!--<button onClick="subscribe();" class="js-subscribe-button">Subscribe</button>-->
+
+
+<p>Amazon Shipping Calculator</p>
+
+<label>
+    <input class="js-cost-input" onkeydown="checkEnter()"
+           placeholder="Cost of order">
+</label>
+
+<button onClick="calculateTotal();">Calculate</button>
+
+<p class="js-total-cost"></p>
+
+<button class="js-button">9a</button>
 
 <script>
-    const product = {
-        name: 'Shirt', 'Delivery-time': '1 day',
-        rating: {
-            stars: 4.5,
-            count: 87
-        },
-        fun: function function1() {
-            console.log('Function inside Object');
+    function checkEnter() {
+        if (event.key === 'Enter') {
+            calculateTotal();
         }
     }
-    // console.log(product);
-    // console.log(product["Delivery-time"]);
-    // console.log(product.name);
-    // console.log(product['name']);
-    console.log(product.rating);
-    console.log(JSON.stringify(product));
-    // product.fun();
+
+    function calculateTotal() {
+        const inputElement = document.querySelector('.js-cost-input');
+        let cost = Number(inputElement.value);
+
+        if (cost < 40) {
+            cost += 10;
+        }
+        document.querySelector('.js-total-cost').innerHTML = `₹${cost}`;
+    }
+
+    function subscribe() {
+        const buttonElement = document.querySelector('.js-subscribe-button');
+
+        if (buttonElement.innerHTML === 'Subscribe') {
+            buttonElement.innerHTML = 'Susbscribed';
+        } else {
+            buttonElement.innerHTML = 'Subscribe';
+        }
+    }
+
+    const buttonElement = document.querySelector(".js-button");
+    console.log(buttonElement);
 </script>
 </body>
 </html>
