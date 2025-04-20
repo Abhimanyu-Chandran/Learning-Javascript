@@ -1,0 +1,25 @@
+body {
+    background-color: #0e0d0d;
+    color: aqua;
+    font-family: Verdana, serif;
+}
+
+img {
+    height: 50px;
+}
+
+.play-button {
+    background-color: transparent;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    border: 3px solid aqua;
+    border-radius: 60px;
+    margin-right: 10px;
+}
+
+.result {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 50px;
+}
